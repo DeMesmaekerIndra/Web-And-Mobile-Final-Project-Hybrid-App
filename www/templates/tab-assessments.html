@@ -1,0 +1,32 @@
+<ion-view view-title="Assessments">
+  <ion-content>
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <ion-label class="input-label padding-left idm-full-width">Search by task:
+      <input type="text" placeholder="Enter a task's name'" class="item-input padding-left"
+        ng-model-options="{ updateOn: 'blur' }" ng-model="filters.taskname">
+    </ion-label>
+
+    <div class="padding-left idm-full-width idm-checkbox">Include:
+      <ion-checkbox ng-model="filters.missed" class="idm-small-checkbox-padding idm-no-border">Missed</ion-checkbox>
+      <ion-checkbox ng-model="filters.done" class="idm-small-checkbox-padding idm-no-border">Done</ion-checkbox>
+    </div>
+
+    <ion-list class="list">
+      <ion-item class="item list-item"
+        ng-repeat="assessment in assessmentList | assessmentFilter:filters track by assessment.Id">
+        <p class="item-divider">From task: {{assessment.parentTaskName}}</p>
+        <p>Date: {{::assessment.Date}}</p>
+        <p>Status: {{assessment.Status}}</p>
+
+        <p class="input-label">
+          Your score on this assessment:
+          <select name="inpScore" id="inpScore"
+            ng-options="option.value for option in assessment.scoreList track by option.score"
+            ng-model="assessment.selectedScore" ng-change="updateAssessmentScore(assessment)"
+            class="item-input idm-home-select">
+          </select>
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

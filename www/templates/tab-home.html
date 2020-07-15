@@ -1,0 +1,38 @@
+<ion-view view-title="Home">
+  <ion-content class="padding">
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <div class="bar bar-header bar-dark">
+      <h1 class="title" ng-if="taskList.length > 0">Recent Tasks:</h1>
+      <h1 class="title" ng-if="taskList.length == 0">You have no recent ongoing tasks!</h1>
+    </div>
+
+    <!--Listing of detailed information from a recent tasks-->
+    <ion-list class="list list-inset has-header" ng-repeat="task in taskList">
+      <div class="item list-item list card idm-no-right-padding">
+        <a href="#/tab/home/{{task.Id}}" class="item item-divider item-icon-right">
+          {{task.Name}}
+          <i class="icon ion-information-circled"></i>
+        </a>
+
+        <div class="item item-icon-right">
+          <p>Date of latest assessment: {{task.assessment.Date}}</p>
+          <p>This assessment was {{task.assessment.Status}}.</p>
+
+          <!--
+            While there really should be a label here,
+            I'm using a <p></p> to wrap the input to use default ionic
+            styles for p to make it blend in with the other elements in the card
+          -->
+          <p class="input-label">
+            Your score on this assessment:
+            <select name="inpScore" id="inpScore"
+              ng-options="option.value for option in task.scoreList track by option.score" ng-model="task.selectedScore"
+              ng-change="updateAssessmentScore(task)" class="item-input idm-home-select">
+            </select>
+          </p>
+          <i class="icon ion-android-checkmark-circle"></i>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

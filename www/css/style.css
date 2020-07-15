@@ -1,0 +1,83 @@
+/*idm: Prefix to differentiate personal styles from ionic styles*/
+.idm-no-right-padding {
+  padding-right: 0;
+}
+
+.idm-small-checkbox-padding {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 50px;
+  padding-right: 2px;
+}
+
+.idm-no-border {
+  border: none;
+}
+
+.idm-home-select {
+  max-width: max-content;
+  min-width: min-content;
+  width: fit-content;
+  font-size: 13px;
+  text-align: left;
+  padding-left: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.idm-full-width {
+  width: 100%;
+}
+
+.idm-checkbox {
+  display: flex;
+  align-items: center;
+  min-width: min-content;
+  max-width: max-content;
+  font-size: 13;
+}
+
+/*Ionic doet vreemde dingen met de HTML date input.. Dus dit is een reset van sommige default waardes.*/
+.idm-date-input {
+  align-items: center !important;
+  -webkit-appearance: menulist !important;
+  background-color: buttonface !important;
+  overflow: hidden !important;
+  width: 40% !important;
+  max-width: 50% !important;
+}
+
+.idm-popover-height {
+  height: 115px !important;
+}
+
+ion-scroll {
+  max-height: 190px;
+}
+
+ion-list-header>h3 {
+  padding-top: 10px;
+}
+
+.idm-big-font {
+  font-size: 20px;
+}
+
+.idm-label-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+ion-label {
+  width: 40%;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  width: 50% !important;
+  padding-right: 5% !important;
+  text-align: left !important;
+}

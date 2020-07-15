@@ -1,0 +1,21 @@
+<ion-view view-title="" hide-nav-bar="true">
+
+  <!--Implement a custom header so we can add our own add button to it later-->
+  <ion-header-bar class="bar-dark">
+
+    <!--Title & add button-->
+    <h1 class="title">Pick a Category</h1>
+    <button class="button button-icon buttons-right ion-android-add light" ng-click="NewCategoryModal()"></button>
+  </ion-header-bar>
+
+  <ion-content class="padding has-header">
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <ion-list class="list" ng-repeat="category in categoryList | filter: { ParentCategoryId : 0 } : true">
+      <a class="item list-item item-icon-right" href="#/tab/tasks/{{category.Id}}">
+        {{category.Name}}
+        <span class="item-note">View category</span>
+        <i class="icon ion-android-arrow-forward"></i>
+      </a>
+    </ion-list>
+  </ion-content>
+</ion-view>

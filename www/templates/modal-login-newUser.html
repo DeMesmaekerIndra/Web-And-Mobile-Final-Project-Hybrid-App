@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Create your account!</h1>
+  </ion-header-bar>
+
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item class="idm-label-input-wrapper">
+        <ion-label>Name: <span class="assertive">*</span> </ion-label>
+        <input type="text" ng-model="newUser.Name" placeholder="Your username...">
+      </ion-item>
+    </ion-list>
+
+    <ion-list ng-hide="newUser.Id === null">
+      <ion-item class="item-text-wrap text-center">Your own personal code will appear here:
+        <p><span class="positive idm-big-font">{{newUser.Id}}</span></p>
+        Make sure you remember it!
+      </ion-item>
+      <ion-item class="text-center" ng-hide="newUser.Ttl === 10">You'll be logged in after:
+        <p><span class="positive idm-big-font">{{newUser.Ttl}}s</span></p>
+      </ion-item>
+    </ion-list>
+
+    <ion-item class="buttons">
+      <button class=" button button-full" ng-click="CreateAndLogin()"
+        ng-class="{'disabled': newUser.Name === '' || newUser.Ttl < 10}">
+        Create Account!
+      </button>
+      <button class="button button-full" ng-click="loginModal()">Cancel...</button>
+    </ion-item>
+    <ion-item class="ion-alert-circled assertive text-center" ng-hide="error === ''"> {{error}}</ion-item>
+  </ion-content>
+</ion-modal-view>

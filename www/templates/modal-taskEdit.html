@@ -1,0 +1,45 @@
+<ion-modal-view>
+  <!--Custom header-->
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Editing Task: {{task.Name}}</h1>
+  </ion-header-bar>
+
+  <!--Body-->
+  <ion-content class="padding has-header">
+    <form novalidate>
+
+      <!--Listing of detailed information from a task-->
+      <ion-list>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> Name: </ion-label>
+          <input type="text" placeholder="{{task.Name}}" ng-model="newValues.name">
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> Description: </ion-label>
+          <textarea placeholder="{{task.Description}}" ng-model="newValues.description"></textarea>
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> Start of the task: </ion-label>
+          <input class="idm-date-input" type="date" ng-model="newValues.startdate">
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> End of the task: </ion-label>
+          <input class="idm-date-input" type="date" ng-model="newValues.enddate">
+        </ion-item>
+      </ion-list>
+
+      <ion-item class="buttons">
+        <button class=" button button-full" ng-click="saveChanges()"
+          ng-class="{'disabled': newValues.name === task.Name && newValues.startdate.getTime() === task.StartDate.getTime() && newValues.enddate.getTime() === task.EndDate.getTime() && newValues.description === task.Description || newValues.name === '' || newValues.start === null}">
+          Save Changes!
+        </button>
+        <button class="button button-full" ng-click="closeModal()">Cancel...</button>
+      </ion-item>
+    </form>
+
+  </ion-content>
+</ion-modal-view>

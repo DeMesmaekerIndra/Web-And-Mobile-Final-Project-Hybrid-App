@@ -1,0 +1,57 @@
+<ion-view view-title="" hide-nav-bar="true">
+
+  <!--Implement a custom header so we can add our own add button to it later-->
+  <ion-header-bar class="bar-dark">
+
+    <!--Implement the standard back button w/ functionality. This is normally automatically added
+    to the ion-view. But since because we had to hide it, we need to add this explicitly-->
+    <button class="button back-button buttons button-clear header-item" ng-click="$ionicGoBack()">
+      <i class="icon ion-android-arrow-back"></i>
+      <span class="back-text"></span>
+    </button>
+
+    <!--Title & add button-->
+    <h1 class="title">Category: {{parentCategory.Name}}</h1>
+    <button class="button button-icon buttons-right ion-android-more-horizontal light"
+      ng-click="popover.show($event)"></button>
+  </ion-header-bar>
+  <ion-content class="padding" scroll="false">
+
+    <ion-list>
+      <ion-list-header>
+        <h3>Sub Categories:</h3>
+      </ion-list-header>
+
+      <ion-scroll>
+        <ion-item class="energized" ng-show="categoryList.length === 0">
+          There are no other categories in {{parentCategory.Name}}!
+        </ion-item>
+        <ion-list ng-repeat="category in categoryList" ng-show="categoryList.length > 0">
+          <a class="item item-icon-right" href="#/tab/tasks/{{category.Id}}">
+            {{category.Name}}
+            <span class="item-note">View category</span>
+            <i class="icon ion-android-arrow-forward"></i>
+          </a>
+        </ion-list>
+      </ion-scroll>
+
+      <ion-list-header>
+        <h3>Tasks:</h3>
+      </ion-list-header>
+
+      <ion-scroll>
+        <ion-item class="energized" ng-show="taskList.length === 0">
+          There are no tasks in {{parentCategory.Name}}!
+        </ion-item>
+        <ion-list class="idm-scrollable-list" ng-repeat="task in taskList" ng-show="taskList.length > 0">
+          <a class="item item-icon-right" href="#/tab/tasks/task/{{task.Id}}">
+            {{task.Name}}
+            <span class="item-note">View details</span>
+            <i class="icon ion-information-circled"></i>
+          </a>
+        </ion-list>
+      </ion-scroll>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

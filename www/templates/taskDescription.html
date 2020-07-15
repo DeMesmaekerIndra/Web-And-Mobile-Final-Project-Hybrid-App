@@ -1,0 +1,43 @@
+<ion-view view-title="" hide-nav-bar="true">
+
+  <!--Implement a custom header so we can add our own edit button to it later-->
+  <ion-header-bar class="bar-dark">
+
+    <!--Implement the standard back button w/ functionality. This is normally automatically added
+    to the ion-view. But since because we had to hide it, we need to add this explicitly-->
+    <button class="button back-button buttons button-clear header-item" ng-click="$ionicGoBack()">
+      <i class="icon ion-android-arrow-back"></i>
+      <span class="back-text"></span>
+    </button>
+
+    <!--Title & edit button-->
+    <h1 class="title">{{task.Name}}</h1>
+    <button class="button button-icon buttons-right ion-compose" ng-click="openModal()"></button>
+  </ion-header-bar>
+
+  <!--Body-->
+  <ion-content class="padding has-header">
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+    <!--Listing of detailed information from a task-->
+    <ion-list class="list row-no-padding">
+      <ion-item class="list-item item-icon-left">
+        <i class="icon ion-ios-calendar-outline"></i>
+        Start: {{task.StartDate.toISOString().split('T')[0]}}
+      </ion-item>
+      <ion-item class="list-item item-icon-left">
+        <i class="icon ion-ios-calendar"></i>
+        End: {{task.EndDate.toISOString().split('T')[0]}}
+      </ion-item>
+      <ion-item class="list-item item-icon-left">
+        <i class="icon ion-ios-help"></i>
+        Status: {{task.Status}}
+      </ion-item>
+      <ion-item class="list-item item-text-wrap item-icon-left">
+        <i class="icon ion-information-circled">
+        </i>
+        Description: {{task.Description}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

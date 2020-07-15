@@ -1,0 +1,53 @@
+<ion-modal-view>
+  <!--Custom header-->
+  <ion-header-bar class="bar-dark">
+    <h1 class="title">Create a new task:</h1>
+  </ion-header-bar>
+
+  <!--Body-->
+  <ion-content class="padding has-header">
+    <form novalidate>
+
+      <!--Listing of detailed information from a task-->
+      <ion-list>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> Name: </ion-label>
+          <input type="text" placeholder="Name of the task..." ng-model="newTask.name">
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label>Scoring method:</ion-label>
+          <select ng-model="newTask.method">
+            <option value="Numeric">Numeric</option>
+            <option value="Descriptive">Descriptive</option>
+          </select>
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> Description: </ion-label>
+          <textarea placeholder="Something descriptive..." ng-model="newTask.description"></textarea>
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> Start of the task: </ion-label>
+          <input type="date" ng-model="newTask.startdate" class="idm-date-input">
+        </ion-item>
+
+        <ion-item class="idm-label-input-wrapper">
+          <ion-label> End of the task: </ion-label>
+          <input type="date" ng-model="newTask.enddate" class="idm-date-input">
+        </ion-item>
+      </ion-list>
+
+      <ion-item class="buttons">
+        <button class="button button-full" ng-click="CreateTask()"
+          ng-class="{'disabled': newTask.name === task.Name && newTask.startdate.getTime() === task.StartDate.getTime() && newTask.enddate.getTime() === task.EndDate.getTime() && newTask.description === task.Description || newTask.name === '' || newTask.start === null}">
+          Add Task!
+        </button>
+        <button class="button button-full" ng-click="closeModal()">Cancel...</button>
+      </ion-item>
+    </form>
+
+  </ion-content>
+</ion-modal-view>
