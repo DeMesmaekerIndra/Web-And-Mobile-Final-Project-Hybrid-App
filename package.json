@@ -21,6 +21,7 @@
     "cordova-android": "^8.1.0",
     "cordova-plugin-ionic-webview": "^4.2.1",
     "lodash": "^4.17.19",
+    "lodash.template": "^4.5.0",
     "websocket-extensions": "^0.1.4",
     "yargs-parser": "^18.1.3"
   },
